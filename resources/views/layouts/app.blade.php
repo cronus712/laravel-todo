@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                        <a href="{{ url('/tasks') }}" class="nav-link">Tasks</a>
+                        <a href="{{ url('admin/tasks') }}" class="nav-link">Tasks</a>
                     </li>
                     </ul>
 
