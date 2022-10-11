@@ -26,6 +26,7 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        {{-- <a href="{{ url('/tasks') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Tasks</a> --}}
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
@@ -35,15 +36,13 @@
 
                     @endauth
 
-                    @if (Route::has('tasks'))
-                    <a href="{{ route('tasks') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Tasks</a>
-                @endif
+                
 
                 </div>
             @endif
 
             <div>
-                <h1>Homepage</h1>
+                @yield('task')
             </div>
         </div>
 

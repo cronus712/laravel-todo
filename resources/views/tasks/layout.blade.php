@@ -1,3 +1,6 @@
+@extends('welcome')
+   
+@section('task')
 <html>
 <head>
     <title>Tasks</title>
@@ -11,3 +14,5 @@
 
 </body>
 </html>
+
+@endsection
