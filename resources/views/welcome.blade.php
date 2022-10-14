@@ -44,6 +44,10 @@
             <div>
                 @yield('task')
             </div>
+
+            <div>
+                @yield('user')
+            </div>
         </div>
 
       

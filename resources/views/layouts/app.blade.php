@@ -36,6 +36,10 @@
                         <li class="nav-item">
                         <a href="{{ url('admin/tasks') }}" class="nav-link">Tasks</a>
                     </li>
+
+                    <li class="nav-item"> 
+                        <a href="{{ url('user') }}" class="nav-link">Users </a>
+                    </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
