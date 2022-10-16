@@ -57,9 +57,9 @@ class UserListController extends Controller
      * @param  Appuser  $user
      * @return IlluminateHttpResponse
      */
-    public function show(User $users)
-    {
-        return view('user.show',compact('users'));
+    public function show(User $user)
+    {     $user = User::find($user->id);
+        return view('user.show',compact('user'));
     }
    
     /**
@@ -68,9 +68,9 @@ class UserListController extends Controller
      * @param  Appuser  $user
      * @return IlluminateHttpResponse
      */
-    public function edit(User $users)
-    {
-        return view('user.edit', compact('users'));
+    public function edit(User $user)
+    {   $user = User::find($user->id);
+        return view('user.edit', compact('user'));
     }
   
     /**

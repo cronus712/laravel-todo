@@ -45,15 +45,15 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Password :</strong>
-                <input class="form-control" style="height:150px" name="password" placeholder="password">
+                <input type="password" class="form-control" style="height:150px" name="password" placeholder="password">
             </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Role :</strong>
-                    <input  class="form-control" style="height:150px" name="role" placeholder="0=user/1=admin">
-                </div>
         </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Role :</strong>
+                <input  class="form-control" style="height:150px" name="role" placeholder="0=user/1=admin">
+            </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
