@@ -40,13 +40,14 @@ class UserListController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6',  
             'role' => 'required',
         ]);
   
-        User::create($request->all());
-   
+         $user = User::create(request(['name', 'email', 'password', 'role']));
+        //  auth()->login($user); login new user after register
+
         return redirect()->route('user.index')
                         ->with('success','User created successfully.');
     }
@@ -85,7 +86,7 @@ class UserListController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            'password' => 'confirmed',
             'role' => 'required',
         ]);
   

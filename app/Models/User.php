@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -33,6 +34,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    /**
+     * add a mutator to ensure hashed passwords
+     */
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
     /**
      * The attributes that should be cast.
      *

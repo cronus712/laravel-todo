@@ -37,23 +37,43 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Email:</strong>
-                    <textarea class="form-control" style="height:150px" name="email" placeholder="email">{{ $user->email }}</textarea>
+                    <input class="form-control" style="height:80px" name="email" placeholder="email" value="{{ $user->email }}">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Password:</strong>
-                    <textarea class="form-control" style="height:150px" name="password" placeholder="password">{{ $user->password }}</textarea>
+                    <strong> New password:</strong>
+                    <input type="password" class="form-control" style="height:80px" name="password" placeholder="new password" value="{{ $user->password }}">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong> Confirm password:</strong>
+                    <input style="height:80px" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="confirm password"value="{{ $user->password }}">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Role:</strong>
-                    <textarea class="form-control" style="height:150px" name="role" placeholder="role">{{ $user->role }}</textarea>
+                    <select class="form-control" style="height:80px" name="role" placeholder="role" > 
+                        {{-- <option value="{{$user->role}}">user</option>
+                        <option value="{{$user->role}}">admin</option>  --}}
+                        
+                        <option value="{{$user->role}}" @if (old('{{$user->role}}') == 'user') selected="selected" @endif>user</option>
+                        <option value="{{$user->role}}" @if (old('{{$user->role}}') == 'admin') selected="selected" @endif>admin</option>
+
+
+                      </select>
+        
+                    {{-- <textarea class="form-control" style="height:150px" name="role" placeholder="role">{{ $user->role }}</textarea> --}}
                 </div>
             </div>
+
+
+            
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
