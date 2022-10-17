@@ -1,3 +1,5 @@
+<link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+
 @extends('user.layout')
  
 @section('content')
@@ -8,9 +10,15 @@
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{route('user.create')}}"> Create New user</a>
+            </div> 
+
+            <div class="pull-left">
+                <a class="btn btn-secondary"  href="{{route('home')}}"><i class="fa fa-backward"></i> Back</a>
             </div>
         </div>
     </div>
+
+    
    
     @if ($message = Session::get('success'))
         <div class="alert alert-success">

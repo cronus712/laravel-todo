@@ -1,3 +1,5 @@
+ <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+
 @extends('tasks.layout')
  
 @section('content')
@@ -8,6 +10,10 @@
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{route('tasks.create')}}"> Create New task</a>
+            </div>
+
+            <div class="pull-left">
+                <a class="btn btn-secondary"  href="{{route('home')}}"><i class="fa fa-backward"></i> Back</a>
             </div>
         </div>
     </div>

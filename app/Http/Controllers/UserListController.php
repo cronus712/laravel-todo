@@ -85,8 +85,8 @@ class UserListController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'confirmed',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6',  
             'role' => 'required',
         ]);
   
