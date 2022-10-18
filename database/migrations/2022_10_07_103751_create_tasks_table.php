@@ -20,6 +20,7 @@ class CreateTasksTable extends Migration
             $table->string('name');
             $table->text('detail');
             $table->timestamps();
+            $table->softDeletes();  
         });
         
         // Schema::table('tasks', function($table) {
