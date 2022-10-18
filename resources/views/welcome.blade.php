@@ -49,6 +49,10 @@
             <div>
                 @yield('user')
             </div>
+
+            <div>
+                @yield('project')
+            </div>
         </div>
 
       

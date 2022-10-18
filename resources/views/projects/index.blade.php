@@ -1,15 +1,15 @@
- <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-@extends('tasks.layout')
+@extends('projects.layout')
  
 @section('content')
     <div class="row mw-">
         <div class="col-lg-12 margin-tb">
             <div class="text-center">
-                <h2 >Task Manager</h2>
+                <h2 >Project Manager</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{route('tasks.create')}}"> Create New task</a>
+                <a class="btn btn-success" href="{{route('project.create')}}"> Create New Project</a>
             </div>
 
             <div class="pull-left">
@@ -29,23 +29,21 @@
             <th>No</th>
             <th>Name</th>
             <th>Details</th>
-            <th>User</th>
-            <th>Project</th>
+           
             <th width="280px">Action</th>
         </tr>
-        @foreach ($tasks as $task)
+        @foreach ($projects as $project)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $task->name }}</td>
-            <td>{{ $task->detail }}</td>
-            <td>{{$task->user->name}}</td>
-            <td>{{$task->project->name}}</td>
+            <td>{{ $project->name }}</td>
+            <td>{{ $project->detail }}</td>
+        
             <td>
-                <form action="{{ route('tasks.destroy',$task->id) }}" method="POST">
+                <form action="{{ route('project.destroy',$project->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{route('tasks.show',$task->id)}}">Show</a>
+                    <a class="btn btn-info" href="{{route('project.show',$project->id)}}">Show</a>
     
-                    <a class="btn btn-primary" href="{{route('tasks.edit',$task->id)}}">Edit</a>
+                    <a class="btn btn-primary" href="{{route('project.edit',$project->id)}}">Edit</a>
    
                     @csrf
                     @method('DELETE')
@@ -57,6 +55,6 @@
         @endforeach
     </table>
   
-    {!! $tasks->links() !!}
+    {!! $projects->links() !!}
       
 @endsection

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserListController;
+use App\Http\Controllers\ProjectController;
 
 
 
@@ -25,6 +26,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
 // Route::post('/userlist/create', [App\Http\Controllers\UserListController::class, 'create'])->name('cri');
 
 Route::resource('user','UserListController');
+Route::resource('project','ProjectController');
 
 
 //add admin seeder for the admin account 

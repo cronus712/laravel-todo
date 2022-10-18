@@ -40,6 +40,10 @@
                     <li class="nav-item"> 
                         <a href="{{ url('user') }}" class="nav-link">Users </a>
                     </li>
+
+                    <li class="nav-item"> 
+                        <a href="{{ url('project') }}" class="nav-link">Projects </a>
+                    </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

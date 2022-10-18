@@ -40,6 +40,30 @@
                     <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{ $task->detail }}</textarea>
                 </div>
             </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <label for="cases">User :</label>
+                <select name="user_id" class="form-control" value="{{ $task->user }}">
+                    <option disabled selected value> -- select a user -- </option>
+                    @foreach ($user as $user)
+                    <option value="{{ $user->id}}">{{ $user->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <label for="cases">Project :</label>
+                <select name="project_id" class="form-control" value="{{ $task->project }}">
+                    <option disabled selected value> -- select a project -- </option>
+                    @foreach ($project as $project)
+                    <option value="{{ $project->id}}">{{ $project->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>

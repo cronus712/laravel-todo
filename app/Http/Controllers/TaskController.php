@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -13,10 +15,12 @@ class TaskController extends Controller
      * @return IlluminateHttpResponse
      */
     public function index()
-    {
-        $tasks = Task::latest()->paginate(5);
+    {    $users = User::all();
+         $tasks = Task::latest()->paginate(5);
+         $projects = Project::all();
+
   
-        return view('tasks.index',compact('tasks'))
+        return view('tasks.index',compact('tasks', 'users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
    
@@ -26,8 +30,10 @@ class TaskController extends Controller
      * @return IlluminateHttpResponse
      */
     public function create()
-    {
-        return view('tasks.create');
+    {  $users = User::all();
+        $projects= Project::all();
+
+        return view('tasks.create', ['users' =>$users], ['projects' => $projects]);
     }
   
     /**
@@ -41,8 +47,12 @@ class TaskController extends Controller
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
-        ]);
-  
+            'user_id' => 'required',
+            'project_id' => 'required',
+            ]);
+        
+          
+
         Task::create($request->all());
    
         return redirect()->route('tasks.index')
@@ -66,9 +76,13 @@ class TaskController extends Controller
      * @param  AppTask  $task
      * @return IlluminateHttpResponse
      */
-    public function edit(Task $task)
-    {
-        return view('tasks.edit',compact('task'));
+    public function edit($id)
+    {    
+        $task = Task::findOrFail($id);
+        $user = User::all();
+        $project = Project::all();
+
+        return view('tasks.edit',compact('task', 'user', 'project'));
     }
   
     /**
@@ -78,14 +92,16 @@ class TaskController extends Controller
      * @param  AppTask  $task
      * @return IlluminateHttpResponse
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
+            'user_id' => 'required',
+            'project_id' => 'required',
         ]);
   
-        $task->update($request->all());
+        Task::whereId($id)->update($request);
   
         return redirect()->route('tasks.index')
                         ->with('success','Task updated successfully');

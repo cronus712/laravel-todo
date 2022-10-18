@@ -1,13 +1,13 @@
-@extends('tasks.layout')
+@extends('projects.layout')
   
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add New task</h2>
+            <h2>Add New project</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{route('tasks.index')}}"> Back</a>
+            <a class="btn btn-primary" href="{{route('project.index')}}"> Back</a>
         </div>
     </div>
 </div>
@@ -23,7 +23,7 @@
     </div>
 @endif
    
-<form action="{{ route('tasks.store') }}" method="POST">
+<form action="{{ route('project.store') }}" method="POST">
     @csrf
   
      <div class="row">
@@ -42,29 +42,6 @@
             </div>
         </div>
         
-        <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>User:</strong>
-              <select name="user_id" class="form-control">
-                  <option disabled selected value> -- select a user -- </option>
-                  @foreach ($users as $user)
-                  <option value="{{ $user->id}}">{{ $user->name}}</option>
-                  @endforeach
-              </select>
-        </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Project:</strong>
-                  <select name="project_id" class="form-control">
-                      <option disabled selected value> -- select a project -- </option>
-                      @foreach ($projects as $project)
-                      <option value="{{ $project->id}}">{{ $project->name}}</option>
-                      @endforeach
-                  </select>
-            </div>
-            </div>
         
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
