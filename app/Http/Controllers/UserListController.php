@@ -41,12 +41,12 @@ class UserListController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:6',  
             'role' => 'required',
         ]);
   
-         $user = User::create(request(['name', 'email', 'password', 'role']));
+            $user = User::create(request(['name', 'email', 'password', 'role']));
         //  auth()->login($user); login new user after register
 
         return redirect()->route('user.index')
@@ -86,8 +86,8 @@ class UserListController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed|min:6',  
+            'email' => 'required|email|unique:users,email',
+            // 'password' => 'required|confirmed|min:6',  
             'role' => 'required',
         ]);
   
@@ -104,7 +104,7 @@ class UserListController extends Controller
      * @return IlluminateHttpResponse
      */
     public function destroy(User $user)
-    {
+    {    
         $user->delete();
   
         return redirect()->route('user.index')

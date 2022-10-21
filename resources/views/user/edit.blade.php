@@ -62,12 +62,13 @@
                         {{-- <option value="{{$user->role}}">user</option>
                         <option value="{{$user->role}}">admin</option>  --}}
                         
-                        <option value="{{$user->role}}" @if (old('{{$user->role}}') == 'user') selected="selected" @endif>user</option>
-                        <option value="{{$user->role}}" @if (old('{{$user->role}}') == 'admin') selected="selected" @endif>admin</option>
+                        <option  @if (old('{{$user->role}}') == 'user')  @endif>user</option>
+                        <option  @if (old('{{$user->role}}') == 'admin')  @endif>admin</option>
 
+                   
+                      
+                    </select>
 
-                      </select>
-        
                     {{-- <textarea class="form-control" style="height:150px" name="role" placeholder="role">{{ $user->role }}</textarea> --}}
                 </div>
             </div>

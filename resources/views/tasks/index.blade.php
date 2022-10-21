@@ -33,12 +33,16 @@
             <th>Project</th>
             <th width="280px">Action</th>
         </tr>
+        
         @foreach ($tasks as $task)
+        {{-- @if ($task->user->name  ?? null)
+         @if ($task->project->name ?? null) --}}
+             
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $task->name }}</td>
             <td>{{ $task->detail }}</td>
-            <td>{{$task->user->name}}</td>
+            <td>{{$task->user->name }}</td>
             <td>{{$task->project->name}}</td>
             <td>
                 <form action="{{ route('tasks.destroy',$task->id) }}" method="POST">
@@ -54,6 +58,8 @@
                 </form>
             </td>
         </tr>
+        {{-- @endif   
+        @endif --}}
         @endforeach
     </table>
   

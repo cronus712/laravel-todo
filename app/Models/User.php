@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use app\Models\Task;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -55,6 +56,14 @@ class User extends Authenticatable
     	return $this->hasMany(Task::class);
     }
 
+  
+
+    protected static function booted()
+    {   parent::boot();
+        static::deleted(function ($user) {
+            $user->tasks()->delete();
+        });
+    }
     /**
      * The attributes that should be cast.
      *

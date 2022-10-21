@@ -45,7 +45,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:tasks,name',
             'detail' => 'required',
             'user_id' => 'required',
             'project_id' => 'required',
@@ -65,9 +65,12 @@ class TaskController extends Controller
      * @param  AppTask  $task
      * @return IlluminateHttpResponse
      */
-    public function show(Task $task)
-    {
-        return view('tasks.show',compact('task'));
+    public function show($id, User $user, Project $project)
+    {   $task = Task::find($id);
+        $user = User::find($user->id);
+        $project = Project::find($project->id);
+
+        return view('tasks.show',compact('task', 'user', 'project'));
     }
    
     /**
@@ -92,16 +95,18 @@ class TaskController extends Controller
      * @param  AppTask  $task
      * @return IlluminateHttpResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:tasks,name',
             'detail' => 'required',
             'user_id' => 'required',
             'project_id' => 'required',
         ]);
   
-        Task::whereId($id)->update($request);
+        // Task::whereId($id)->update($request);
+        $task->update($request->all());
+
   
         return redirect()->route('tasks.index')
                         ->with('success','Task updated successfully');
@@ -114,7 +119,7 @@ class TaskController extends Controller
      * @return IlluminateHttpResponse
      */
     public function destroy(Task $task)
-    {
+    {    
         $task->delete();
   
         return redirect()->route('tasks.index')

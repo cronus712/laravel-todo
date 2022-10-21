@@ -24,5 +24,17 @@
                 {{ $task->detail }}
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>User:</strong>
+                    {{$task->user->name}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Project:</strong>
+                    {{$task->project->name}}
+            </div>
+        </div>
     </div>
 @endsection
