@@ -24,27 +24,31 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Task Manager') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                            <a href="{{ url('admin/tasks') }}" class="nav-link"> All Tasks</a>
+                        </li>
                         <li class="nav-item">
-                        <a href="{{ url('admin/tasks') }}" class="nav-link">Tasks</a>
-                    </li>
+                            <a href="{{ url('publicUser/index') }}" class="nav-link"> My Tasks</a>
+                        </li>
+                       
 
-                    <li class="nav-item"> 
-                        <a href="{{ url('user') }}" class="nav-link">Users </a>
-                    </li>
+                        <li class="nav-item"> 
+                            <a href="{{ url('user') }}" class="nav-link">Users </a>
+                        </li>
 
-                    <li class="nav-item"> 
-                        <a href="{{ url('project') }}" class="nav-link">Projects </a>
-                    </li>
-                    </ul>
+                        <li class="nav-item"> 
+                            <a href="{{ url('admin/project') }}" class="nav-link">Projects </a>
+                        </li>
+                        </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -57,9 +61,9 @@
                             @endif
 
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                </li> --}}
                             @endif
                         @else
                             <li class="nav-item dropdown">

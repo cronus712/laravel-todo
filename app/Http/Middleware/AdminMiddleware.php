@@ -26,7 +26,8 @@ class AdminMiddleware
             } 
             
             else {
-              
+                
+                
                 return redirect('/home')->with('message', 'Access denied !');
             }
 

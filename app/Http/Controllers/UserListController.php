@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -45,10 +46,11 @@ class UserListController extends Controller
             'password' => 'required|confirmed|min:6',  
             'role' => 'required',
         ]);
-  
+             
             $user = User::create(request(['name', 'email', 'password', 'role']));
         //  auth()->login($user); login new user after register
-
+             
+           
         return redirect()->route('user.index')
                         ->with('success','User created successfully.');
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -44,11 +45,10 @@ class ProjectController extends Controller
             'name' => 'required|unique:projects,name',
             'detail' => 'required',
             ]);
-        
-          
-
+         
+            
         Project::create($request->all());
-   
+ 
         return redirect()->route('project.index')
                         ->with('success','Project created successfully.');
     }

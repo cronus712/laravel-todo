@@ -13,20 +13,48 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/register', function() {
+
+    return redirect('/login');
+});
+
+Route::post('/register', function() {
+
+    return redirect('/login');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
+    if (Route::prefix('admin')) {
+        Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
 
-    Route::resource('tasks','TaskController');
-});
+            Route::resource('tasks','TaskController');
+            Route::resource('project','ProjectController');
+            
+            
+            });
+    
+    }
+   
 
-// Route::get('/userlist/index', [App\Http\Controllers\UserListController::class, 'index'])->name('list');
-// Route::post('/userlist/create', [App\Http\Controllers\UserListController::class, 'create'])->name('cri');
+    
+    Route::get('publicUser/index', [App\Http\Controllers\PublicUserController::class, 'index']);
+    // Route::resource('tasks', 'TaskController', [
+    //     'only' => ['index', 'show']
+    // ]);
+
+
 
 Route::resource('user','UserListController');
-Route::resource('project','ProjectController');
+
+
+
+
+
+
+
+
 
 
 //add admin seeder for the admin account 
