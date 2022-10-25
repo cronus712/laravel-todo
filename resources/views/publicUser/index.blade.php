@@ -21,6 +21,8 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+
+   
    
     <table class="table table-bordered">
         <tr>
@@ -29,7 +31,7 @@
             <th>Details</th>
             <th>User</th>
             <th>Project</th>
-            {{-- <th width="280px">Action</th> --}}
+            <th>Action</th>
         </tr>
         
         @foreach ($user->tasks as $tasks)
@@ -42,10 +44,10 @@
             <td>{{ $tasks->detail }}</td>
             <td>{{$tasks->user->name }}</td>
             <td>{{$tasks->project->name}}</td>
-            {{-- <td>
-                    <a class="btn btn-info" href="{{route('tasks.show',$task->id)}}">Show</a>
+            <td>
+                    <a class="btn btn-info" href="{{url('publicuser/show',$tasks->id)}}">Show</a>
     
-            </td> --}}
+            </td>
         </tr>
         {{-- @endif   
         @endif --}}

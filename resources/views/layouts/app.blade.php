@@ -37,12 +37,12 @@
                             <a href="{{ url('admin/tasks') }}" class="nav-link"> All Tasks</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('publicUser/index') }}" class="nav-link"> My Tasks</a>
+                            <a href="{{ url('publicuser/index') }}" class="nav-link"> My Tasks</a>
                         </li>
                        
 
                         <li class="nav-item"> 
-                            <a href="{{ url('user') }}" class="nav-link">Users </a>
+                            <a href="{{ url('admin/user') }}" class="nav-link">Users </a>
                         </li>
 
                         <li class="nav-item"> 

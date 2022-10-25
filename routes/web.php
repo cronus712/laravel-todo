@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserListController;
 use App\Http\Controllers\ProjectController;
-
+use Illuminate\Support\Facades\View;
 
 
 Route::get('/', function () {
@@ -26,27 +26,38 @@ Route::post('/register', function() {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-    if (Route::prefix('admin')) {
-        Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
 
-            Route::resource('tasks','TaskController');
-            Route::resource('project','ProjectController');
-            
-            
-            });
+
+
+Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
+
+ Route::resource('tasks','TaskController');
+ Route::resource('project','ProjectController');
+ Route::resource('user','UserListController');
+
+ });
     
-    }
+    
    
 
+ Route::prefix('publicuser')->middleware(['auth', 'isUser'])->group(function(){
+ Route::get('index', [App\Http\Controllers\PublicUserController::class, 'index']);
+ Route::get('show/{user}',  [App\Http\Controllers\PublicUserController::class, 'show']);
     
-    Route::get('publicUser/index', [App\Http\Controllers\PublicUserController::class, 'index']);
+ });
+       
+ Route::get('/accessdenied', function() {
+ 
+    return view('errors.accessdenied');
+    
+});
+   
     // Route::resource('tasks', 'TaskController', [
     //     'only' => ['index', 'show']
     // ]);
 
 
 
-Route::resource('user','UserListController');
 
 
 

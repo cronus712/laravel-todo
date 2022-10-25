@@ -6,7 +6,7 @@
                 <h2> Show task</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{route('tasks.index')}}"> Back</a>
+                <a class="btn btn-primary" href="{{route('publicUser.index')}}"> Back</a>
             </div>
         </div>
     </div>

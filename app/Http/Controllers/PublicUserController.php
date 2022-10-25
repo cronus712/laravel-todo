@@ -32,16 +32,13 @@ class PublicUserController extends Controller
      /**
      * Display the specified resource.
      *
-     * @param  AppTask  $task
+     * @param  ApppublicUser  $publicUser
      * @return IlluminateHttpResponses
      */
-    public function show(Request $request)
-    {    $user = $request->user(); // returns an instance of the authenticated user...
-         $id = $request->user()->id; // Retrieve the currently authenticated user's ID...
-
-        // $task = Task::findOrFail($task->id);
-        // $user = User::findOrFail($user->id);
-        // $project = Project::findOrFail  ($project->id);
+    public function show(Task $task, User $user, Project $project)
+    {  // $task = Task::find($task->id);
+    //     $user = User::find($user->id);
+    //     $project = Project::find($project->id);
 
         return view('publicUser.show',compact('task', 'user', 'project'));
     }

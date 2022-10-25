@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,25 +19,16 @@ class AdminMiddleware
     {
           if(Auth::check()) {
 
-            if( Auth::user()->role == "admin") {
+            if( Auth::user()->role == "user") {
                 
 
                 return $next($request);
             } 
             
-            else {
-                
-
-                return redirect('/accessdenied')->with('message', 'Access denied !');
-            }
-
+        
           }
           
-          else {
-
-            return redirect('/login')->with('message', 'login to access');
-
-            }
+        
 
         return $next($request);
     }
