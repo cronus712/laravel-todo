@@ -15,15 +15,23 @@ class PublicUserController extends Controller
      *
      * @return IlluminateHttpResponse
      */
-    public function index(Request $request, Task $tasks)
+    public function index(Request $request)
     {   
         //   $user = Auth::user();
         //  $user = User::find($user->id);
-         $tasks = Task::latest()->paginate(5);
+        //  $tasks = Task::latest()->paginate(5);
         //  $projects = Project::findOrFail();
          $user = User::find(auth()->user()->id);
         
-
+         $tasks = Task::where([
+            ['name', '!=', null],
+            [function ($query) use ($request) {
+            if (($term = $request->term)) {
+                $query->orWhere('name', 'LIKE', '%'. $term. '%')->get();
+            }
+            }]
+        ])->orderBy("id", "desc")
+          ->paginate(5);
         return view('publicUser.index',compact('tasks', 'user'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }   
@@ -36,10 +44,11 @@ class PublicUserController extends Controller
      * @return IlluminateHttpResponses
      */
     public function show(Task $task, User $user, Project $project)
-    {  // $task = Task::find($task->id);
-    //     $user = User::find($user->id);
-    //     $project = Project::find($project->id);
+    {   $task = Task::find($task->id);
+        $user = User::find($user->id);
+        $project = Project::find($project->id);
 
-        return view('publicUser.show',compact('task', 'user', 'project'));
+
+        return view('publicuser.show',compact('task', 'user', 'project'));
     }
 }

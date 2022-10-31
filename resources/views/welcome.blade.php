@@ -55,6 +55,10 @@
             <div>
                 @yield('project')
             </div>
+
+            <div>
+                @yield('mytasks')
+            </div>
         </div>
 
       

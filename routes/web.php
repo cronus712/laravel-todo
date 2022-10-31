@@ -41,8 +41,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
    
 
  Route::prefix('publicuser')->middleware(['auth', 'isUser'])->group(function(){
- Route::get('index', [App\Http\Controllers\PublicUserController::class, 'index']);
- Route::get('show/{user}',  [App\Http\Controllers\PublicUserController::class, 'show']);
+ Route::get('index', [App\Http\Controllers\PublicUserController::class, 'index'])->name('publicuser.index');;
+ Route::get('show/{user}',  [App\Http\Controllers\PublicUserController::class, 'show'])->name('publicuser.show');;
     
  });
        

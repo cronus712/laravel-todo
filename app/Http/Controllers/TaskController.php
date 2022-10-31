@@ -14,10 +14,19 @@ class TaskController extends Controller
      *
      * @return IlluminateHttpResponse
      */
-    public function index()
+    public function index(Request $request)
     {    $users = User::all();
-         $tasks = Task::latest()->paginate(5);
+        //  $tasks = Task::latest()->paginate(5);
          $projects = Project::all();
+         $tasks = Task::where([
+            ['name', '!=', null],
+            [function ($query) use ($request) {
+            if (($term = $request->term)) {
+                $query->orWhere('name', 'LIKE', '%'. $term. '%')->get();
+            }
+            }]
+        ])->orderBy("id", "desc")
+          ->paginate(5);
 
   
         return view('tasks.index',compact('tasks', 'users'))

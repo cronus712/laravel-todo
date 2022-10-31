@@ -13,9 +13,17 @@ class UserListController extends Controller
      *
      * @return IlluminateHttpResponse
      */
-    public function index()
-    {
-        $users = User::latest()->paginate(5);
+    public function index(Request $request)
+    {   $users = User::where([
+        ['name', '!=', null],
+        [function ($query) use ($request) {
+        if (($term = $request->term)) {
+            $query->orWhere('name', 'LIKE', '%'. $term. '%')->get();
+        }
+        }]
+    ])->orderBy("id", "desc")
+      ->paginate(5);
+        // $users = User::latest()->paginate(5);
         // $users = User::has('task')->get();
 
         return view('user.index',compact('users'))
@@ -49,7 +57,6 @@ class UserListController extends Controller
              
             $user = User::create(request(['name', 'email', 'password', 'role']));
         //  auth()->login($user); login new user after register
-             
            
         return redirect()->route('user.index')
                         ->with('success','User created successfully.');

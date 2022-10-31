@@ -4,6 +4,31 @@
  
 @section('content')
     <div class="row mw-">
+        <div>
+            <div class="mx-auto pull-right">
+                <div class="">
+                    <form action="{{ route('user.index') }}" method="GET" role="search">
+    
+                        <div class="input-group">
+                            <span class="input-group-btn mr-5 mt-1 ">
+                                <button class="btn btn-info mb-5" type="submit" title="Search users" style="font-size: 24px">
+                                    <span class="fa fa-search"></span>
+                                </button>
+                            </span>
+                            <input type="text" class="form-control mr-2" name="term" placeholder="Search users" id="term">
+                            <a href="{{ route('user.index') }}" class=" mt-1">
+                                <span class="input-group-btn ">
+                                    <button class="btn btn-light pull-right " type="button" title="Refresh page" style="font-size: 20px">
+                                        <span class="fa fa-refresh "></span>
+                                    </button>
+                                </span>
+                                
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="col-lg-12 margin-tb">
             <div class="text-center">
                 <h2 >User Manager</h2>
