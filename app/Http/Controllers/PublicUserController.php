@@ -43,12 +43,12 @@ class PublicUserController extends Controller
      * @param  ApppublicUser  $publicUser
      * @return IlluminateHttpResponses
      */
-    public function show(Task $task, User $user, Project $project)
-    {   $task = Task::find($task->id);
-        $user = User::find($user->id);
-        $project = Project::find($project->id);
+    public function show($id)
+    {   $task = Task::find($id);
+        // $user = User::find($user->id);
+        // $project = Project::find($project->id);
 
 
-        return view('publicuser.show',compact('task', 'user', 'project'));
+        return view('publicuser.show',compact('task'));
     }
 }

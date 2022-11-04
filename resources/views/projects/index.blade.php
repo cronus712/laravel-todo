@@ -17,8 +17,8 @@
                                 </button>
                             </span>
                             <input type="text" class="form-control mr-2" name="term" placeholder="Search projects" id="term">
-                            <a href="{{ route('project.index') }}" class=" mt-1">
-                                <span >
+                            <a href="{{ route('project.index') }}" class=" mt-1 ml">
+                                <span class="pull-right " style=" position: absolute; top: 1px; left: 260px;">
                                     <button class="btn btn-light pull-right " type="button" title="Refresh page" style="font-size: 20px">
                                         <span class="fa fa-refresh "></span>
                                     </button>

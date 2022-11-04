@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Providers\UserCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,4 +28,15 @@ class HomeController extends Controller
     {   
         return view('home');
     }
+
+    public function upload(Request $request)
+    {
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+            $request->image->storeAs('images',$filename,'public');
+            Auth()->user()->update(['image'=>$filename ]);
+        }
+        return redirect()->back();
+    }
 }
+

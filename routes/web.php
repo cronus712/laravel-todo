@@ -6,7 +6,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserListController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\View;
-
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,7 +24,7 @@ Route::post('/register', function() {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::post('/home','HomeController@upload');
 
 
 
@@ -64,8 +64,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
 
 
 
-
-
-
+//fix block display in edit show blades
 
 //add admin seeder for the admin account 

@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes(); 
+            $table->softDeletes();
+            $table->string('image')->default('user.png'); 
         });
     }
 
