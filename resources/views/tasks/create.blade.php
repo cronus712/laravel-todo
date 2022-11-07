@@ -30,7 +30,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
             </div>
         </div>
 
@@ -38,14 +38,14 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Detail:</strong>
-                <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
+                <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail" value="{{ old('detail') }}"></textarea>
             </div>
         </div>
         
         <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>User:</strong>
-              <select name="user_id" class="form-control">
+              <select name="user_id" class="form-control" >
                   <option disabled selected value> -- select a user -- </option>
                   @foreach ($users as $user)
                   <option value="{{ $user->id}}">{{ $user->name}}</option>
@@ -67,7 +67,7 @@
             </div>
         
 
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>

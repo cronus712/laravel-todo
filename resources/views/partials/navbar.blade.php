@@ -1,12 +1,16 @@
 
     <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet" />
 
     
      <body>
-        <nav class="navbar navbar-expand-md shadow p-3 mb-2 bg-white rounded">
+        <nav class="navbar navbar-expand-md shadow-sm p-2 mb-1 bg-white " id="common-navbar">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <h4>LOGO</h4>
+                <a class="navbar-brand " href="{{ url('/') }}">
+                    {{ config('app.name', 'Task Manager') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -34,7 +38,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav pull-right ">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -85,4 +89,5 @@
 
             
         </nav>
+        
 </body>

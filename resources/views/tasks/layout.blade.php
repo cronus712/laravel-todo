@@ -1,10 +1,10 @@
-@extends('welcome')
+@extends('sidenav')
    
 @section('task')
 <html>
 <head>
     <title>Tasks</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+    
 </head>
 <body>
 
@@ -12,6 +12,7 @@
     @yield('content')
 </div>
 
+<script src="/js/scripts.js"></script>
 </body>
 </html>
 

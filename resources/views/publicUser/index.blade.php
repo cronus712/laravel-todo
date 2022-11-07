@@ -4,31 +4,22 @@
  
 @section('content')
     <div class="row mw-">
-        <div>
-            <div class="mx-auto pull-right">
-                <div class="">
-                    <form action="{{ route('publicuser.index') }}" method="GET" role="search">
-    
-                        <div class="input-group">
-                            <span class="input-group-btn mr-5 mt-1 ">
-                                <button class="btn btn-info mb-5" type="submit" title="Search tasks" style="font-size: 24px">
-                                    <span class="fa fa-search"></span>
-                                </button>
-                            </span>
-                            <input type="text" class="form-control mr-2" name="term" placeholder="Search tasks" id="term">
-                            <a href="{{ route('publicuser.index') }}" class=" mt-1">
-                                <span class="pull-right " style=" position: absolute; top: 1px; left: 260px;">
-                                    <button class="btn btn-light pull-right " type="button" title="Refresh page" style="font-size: 20px">
-                                        <span class="fa fa-refresh "></span>
-                                    </button>
-                                </span>
-                                
-                            </a>
-                        </div>
-                    </form>
-                </div>
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="{{ route('publicuser.index') }}" method="GET" role="search" style="width: 20%;">
+            <div class="input-group">
+                <input class="form-control" type="text" name="term" placeholder="Search for..." aria-label="Search tasks" aria-describedby="btnNavbarSearch" id="term"/>
+                <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+
+                <a href="{{ route('publicuser.index') }}" >
+                    <span class="pull-left" style=" position: absolute; top: 1px; right: 240px;">
+                        <button class="btn btn-light " type="button" title="Refresh page" style="font-size: 20px">
+                            <span class="fa fa-refresh " ></span>
+                        </button>
+                    </span>
+                    
+                </a>
             </div>
-        </div>
+            
+        </form>
         <div class="col-lg-12 margin-tb">
             <div class="text-center">
                 <h2 >Task Manager</h2>

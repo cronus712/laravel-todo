@@ -51,6 +51,10 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
     return view('errors.accessdenied');
     
 });
+
+Route::get('/sidenav', function(){
+    return view('sidenav');
+});
    
     // Route::resource('tasks', 'TaskController', [
     //     'only' => ['index', 'show']
