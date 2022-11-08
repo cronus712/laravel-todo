@@ -5,13 +5,13 @@
 @section('content')
     <div class="row mw-">
         
-        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="{{ route('user.index') }}" method="GET" role="search" style="width: 20%;">
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="{{ route('user.index') }}" method="GET" role="search" style="width: 20%; ">
             <div class="input-group">
                 <input class="form-control" type="text" name="term" placeholder="Search for..." aria-label="Search tasks" aria-describedby="btnNavbarSearch" id="term"/>
-                <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+                <button class="btn btn-primary" id="btnNavbarSearch" type="submit" title="Search"><i class="fas fa-search"></i></button>
 
                 <a href="{{ route('user.index') }}" >
-                    <span class="pull-left" style=" position: absolute; top: 1px; right: 240px;">
+                    <span class="pull-left" style=" position: absolute; top: 1px; right: 225px;">
                         <button class="btn btn-light " type="button" title="Refresh page" style="font-size: 20px">
                             <span class="fa fa-refresh " ></span>
                         </button>
@@ -68,8 +68,12 @@
    
                     @csrf
                     @method('DELETE')
-      
+
+                    @if(Auth::user()->id === $user->id)
+                            <a href='#' class="btn btn-danger" disabled title="can't delete ">Delete </a>
+                        @else
                     <button type="submit" class="btn btn-danger">Delete</button>
+                    @endif
                 </form>
             </td>
         </tr>

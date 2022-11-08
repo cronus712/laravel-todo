@@ -87,7 +87,7 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Home
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
@@ -105,12 +105,17 @@
                            
                 
                             <a href="{{ url('admin/user') }}" class="nav-link"> 
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Users
                             </a>
                             <a href="{{ url('admin/project') }}" class="nav-link">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Projects
+                            </a>
+
+                            <a href="{{ url('admin/project') }}" class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                                Profile
                             </a>
                         </div>
                     </div>
@@ -130,7 +135,7 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Dashboard</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Welcome home</li>
+                            <li class="breadcrumb-item active">Welcome  <strong style="font-size:17px; "> {{ Auth::user()->name }} </strong> !</li>
                         </ol>
                         {{-- <div class="card mb-4">
                             <div class="card-body">
