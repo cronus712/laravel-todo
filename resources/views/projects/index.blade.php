@@ -87,10 +87,11 @@
             </td>
         </tr>
         @endforeach
+
     </table>
   
-    {!! $projects->links() !!}
-
+    {{-- {!! $projects->links() !!} --}}
+    {{$projects->links("pagination::bootstrap-4")}}
     
       
 @endsection
