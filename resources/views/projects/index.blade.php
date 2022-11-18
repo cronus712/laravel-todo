@@ -3,6 +3,22 @@
 @extends('projects.layout')
  
 @section('content')
+    <div class="row mt-5">
+        @foreach ($projects as $project)
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-header" style="background-color: rgb(57, 70, 211)">Projects</div>
+                <div class="card-body">
+                <h5 class="card-title"><strong>{{$project->name}}</strong></h5>
+                 <p class="card-text">{{$project->detail}}</p>
+             </div>
+            </div>
+        </div>
+        @endforeach
+
+    </div>
+
+
     <div class="row mw-">
 
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="{{ route('project.index') }}" method="GET" role="search" style="width: 20%;">
@@ -11,7 +27,7 @@
                 <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
 
                 <a href="{{ route('project.index') }}" >
-                    <span class="pull-left" style=" position: absolute; top: 1px; right: 240px;">
+                    <span class="mt-3" style="margin-left: 10px;">
                         <button class="btn btn-light " type="button" title="Refresh page" style="font-size: 20px">
                             <span class="fa fa-refresh " ></span>
                         </button>
@@ -74,5 +90,7 @@
     </table>
   
     {!! $projects->links() !!}
+
+    
       
 @endsection

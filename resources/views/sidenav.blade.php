@@ -86,7 +86,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="{{url('home')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Home
                             </a>
@@ -113,7 +113,7 @@
                                 Projects
                             </a>
 
-                            <a href="{{ url('admin/project') }}" class="nav-link">
+                            <a href="{{ url('profile/edit') }}" class="nav-link">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Profile
                             </a>
@@ -135,7 +135,7 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Dashboard</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Welcome  <strong style="font-size:17px; "> {{ Auth::user()->name }} </strong> !</li>
+                            <li class="breadcrumb-item active" >Welcome  <strong style="font-size:17px;  "> {{ Auth::user()->name }} </strong> !</li>
                         </ol>
                         {{-- <div class="card mb-4">
                             <div class="card-body">
@@ -164,6 +164,10 @@
             
                         <div>
                             @yield('mytasks')
+                        </div>
+
+                        <div>
+                            @yield('profile')
                         </div>
                     </div>
                 

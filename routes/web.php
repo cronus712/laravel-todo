@@ -12,6 +12,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/profile', function() {
+//     return view('profile');
+// });
+
 Auth::routes();
 Route::get('/register', function() {
 
@@ -52,9 +56,17 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
     
 });
 
-Route::get('/sidenav', function(){
-    return view('sidenav');
+Route::prefix('profile')->group(function() {
+    Route::get('/edit/', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/update/{user}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
 });
+
+
+
+// Route::get('/sidenav', function(){
+//     return view('sidenav');
+// });
    
     // Route::resource('tasks', 'TaskController', [
     //     'only' => ['index', 'show']

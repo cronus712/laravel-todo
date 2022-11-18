@@ -80,6 +80,7 @@ class UserListController extends Controller
      * @return IlluminateHttpResponse
      */
     public function edit(User $user)
+
     {   $user = User::find($user->id);
         return view('user.edit', compact('user'));
     }
@@ -92,16 +93,17 @@ class UserListController extends Controller
      * @return IlluminateHttpResponse
      */
     public function update(Request $request, User $user)
-    {
+    {        
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             // 'password' => 'required|confirmed|min:6',  
             'role' => 'required',
         ]);
+
   
         $user->update($request->all());
-  
         return redirect()->route('user.index')
                         ->with('success','User updated successfully');
     }
@@ -119,6 +121,8 @@ class UserListController extends Controller
         return redirect()->route('user.index')
                         ->with('success','User deleted successfully');
     }
+
+
 }
     // public function index() {
     //     $users = User::all();

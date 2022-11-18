@@ -3,6 +3,19 @@
 @extends('publicUser.layout')
  
 @section('content')
+<div class="row mt-5">
+    @foreach ($user->tasks as $tasks)
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-header" style="background-color: rgb(208, 211, 57)">Tasks</div>
+            <div class="card-body">
+            <h5 class="card-title"><strong>{{$tasks->name}}</strong></h5>
+             <p class="card-text">{{$tasks->detail}}</p>
+         </div>
+        </div>
+    </div>
+    @endforeach
+</div>
     <div class="row mw-">
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="{{ route('publicuser.index') }}" method="GET" role="search" style="width: 20%;">
             <div class="input-group">
@@ -10,8 +23,8 @@
                 <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
 
                 <a href="{{ route('publicuser.index') }}" >
-                    <span class="pull-left" style=" position: absolute; top: 1px; right: 240px;">
-                        <button class="btn btn-light " type="button" title="Refresh page" style="font-size: 20px">
+                    <span class="mt-3" style="margin-left: 10px;">
+                        <button class="btn btn-light" type="button" title="Refresh page" style="font-size: 20px">
                             <span class="fa fa-refresh " ></span>
                         </button>
                     </span>
